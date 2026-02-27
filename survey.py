@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 from openpyxl import Workbook, load_workbook
 import os
@@ -81,3 +82,22 @@ if st.button("送信"):
 
 
     st.success("回答ありがとうございました！")
+
+    import pandas as pd
+import os
+
+FILE_NAME = "results.xlsx"
+
+COLUMNS = [
+    "送信日時",
+    "名前",
+    "年齢",
+    "満足度",
+    "開始時刻",
+    "終了時刻",
+    "回答時間(秒)"
+]
+
+if not os.path.exists(FILE_NAME):
+    df = pd.DataFrame(columns=COLUMNS)
+    df.to_excel(FILE_NAME, index=False)
